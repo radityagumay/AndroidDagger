@@ -1,10 +1,13 @@
 package com.tokopedia.android.network;
 
 import com.tokopedia.android.service.response.BaseResponse;
+import com.tokopedia.android.service.response.RepositoryResponse;
+import com.tokopedia.android.service.response.UserResponse;
 
-import retrofit.http.GET;
-import retrofit.http.Headers;
-import retrofit.http.Path;
+import java.util.List;
+
+import retrofit2.http.GET;
+import retrofit2.http.Path;
 import rx.Observable;
 
 /**
@@ -12,11 +15,19 @@ import rx.Observable;
  */
 public interface RestService {
 
-    @Headers(ApiConstant.CONTENT_TYPE_JSON)
     @GET(ApiConstant.PRODUCT)
     Observable<BaseResponse> getProduct();
 
-    @Headers(ApiConstant.CONTENT_TYPE_JSON)
     @GET("/people/{personId}")
-    Observable<Character> getCharacter(@Path("personId") int id);
+    Observable<com.tokopedia.android.service.Character> getCharacter(@Path("personId") int id);
+
+    @GET("/users/{username}/repos")
+    Observable<List<RepositoryResponse>> getUsersRepositories(
+            @Path("username") String username
+    );
+
+    @GET("/users/{username}")
+    Observable<UserResponse> getUser(
+            @Path("username") String username
+    );
 }

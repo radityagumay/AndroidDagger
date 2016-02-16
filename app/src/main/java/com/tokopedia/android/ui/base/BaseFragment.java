@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tokopedia.android.injection.data.DataManager;
-
 import butterknife.ButterKnife;
 import rx.subscriptions.CompositeSubscription;
 

@@ -1,8 +1,6 @@
 package com.tokopedia.android.injection.component;
 
 import com.tokopedia.android.injection.PerDataManager;
-import com.tokopedia.android.injection.data.DataManager;
-import com.tokopedia.android.injection.module.DataManagerModule;
 
 import dagger.Component;
 

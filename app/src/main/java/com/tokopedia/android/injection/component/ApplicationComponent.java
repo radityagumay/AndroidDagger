@@ -3,7 +3,6 @@ package com.tokopedia.android.injection.component;
 import android.app.Application;
 
 import com.squareup.otto.Bus;
-import com.tokopedia.android.injection.data.DataManager;
 import com.tokopedia.android.injection.module.ApplicationModule;
 import com.tokopedia.android.ui.activity.MainActivity;
 import com.tokopedia.android.ui.base.BaseActivity;

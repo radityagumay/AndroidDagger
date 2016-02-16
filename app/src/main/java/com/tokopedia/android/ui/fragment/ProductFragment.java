@@ -1,35 +1,36 @@
 package com.tokopedia.android.ui.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.common.collect.ImmutableList;
 import com.tokopedia.android.R;
+import com.tokopedia.android.service.Repository;
 import com.tokopedia.android.ui.base.BaseFragment;
-import com.tokopedia.android.ui.presenter.FragmentPresenter;
-import com.tokopedia.android.ui.view.ProductView;
-
-import java.util.List;
+import com.tokopedia.android.ui.presenter.ProductPresenter;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by raditya.gumay on 16/02/2016.
  */
-public class ProductFragment extends BaseFragment implements
-        ProductView {
+public class ProductFragment extends BaseFragment {
 
     @Inject
-    FragmentPresenter mPresenter;
+    ProductPresenter mPresenter;
+
     @Bind(R.id.tv_product)
     TextView mTextView;
+
+    private Activity mActivity;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -71,48 +72,19 @@ public class ProductFragment extends BaseFragment implements
     }
 
     private void callService() {
-        int[] characterIds = new int[]{1, 2, 3};
-        mSubscriptions.add(mDataManager.getCharacters(characterIds)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(mDataManager.getScheduler())
-                .subscribe(new Subscriber<Character>() {
-                    @Override
-                    public void onCompleted() {
-                        //Timber.d("onCompleted");
-                        mTextView.setText("onCompleted");
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-                        //Timber.e("There was an error retrieving the characters " + error);
-                        mTextView.setText(error.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(Character character) {
-                        //Timber.d("onNext :: " + character);
-                        mTextView.setText(character);
-                    }
-                }));
+        mPresenter.loadRepository();
     }
 
     @Override
-    public void showProgress() {
-
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
     }
 
-    @Override
-    public void hideProgress() {
-
+    public void showLoading(boolean loading) {
+        Toast.makeText(mActivity, loading ? "true" : "false", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void setItems(List<String> items) {
-
-    }
-
-    @Override
-    public void showMessage(String message) {
-
+    public void setRepositories(ImmutableList<Repository> repositories) {
+        Toast.makeText(mActivity, repositories.get(0).name, Toast.LENGTH_SHORT).show();
     }
 }

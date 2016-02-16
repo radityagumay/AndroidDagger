@@ -3,7 +3,6 @@ package com.tokopedia.android.injection.module;
 import android.app.Application;
 
 import com.squareup.otto.Bus;
-import com.tokopedia.android.injection.data.DataManager;
 
 import javax.inject.Singleton;
 

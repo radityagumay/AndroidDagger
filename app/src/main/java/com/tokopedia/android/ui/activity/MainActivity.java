@@ -8,17 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tokopedia.android.R;
-import com.tokopedia.android.TokopediaApplication;
-import com.tokopedia.android.injection.data.DataManager;
 import com.tokopedia.android.ui.base.BaseActivity;
 import com.tokopedia.android.ui.adapter.MainSectionsPagerAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.subscriptions.CompositeSubscription;
-import timber.log.Timber;
 
 public class MainActivity extends BaseActivity {
 
