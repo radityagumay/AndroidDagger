@@ -29,16 +29,4 @@ public class ApplicationModule {
         return mApplication;
     }
 
-    @Provides
-    @Singleton
-    DataManager provideDataManager() {
-        return new DataManager(mApplication);
-    }
-
-    @Provides
-    @Singleton
-    Bus provideEventBus() {
-        return new Bus();
-    }
-
 }

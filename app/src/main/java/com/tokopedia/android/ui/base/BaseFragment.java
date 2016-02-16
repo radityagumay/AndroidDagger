@@ -14,9 +14,6 @@ import rx.subscriptions.CompositeSubscription;
  */
 public abstract class BaseFragment extends Fragment {
 
-    protected CompositeSubscription mSubscriptions;
-    protected DataManager mDataManager;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +39,6 @@ public abstract class BaseFragment extends Fragment {
 
     private void initInjection() {
         ((BaseActivity) getActivity()).applicationComponent().inject(this);
-
-        mSubscriptions = new CompositeSubscription();
-        mDataManager = ((BaseActivity) getActivity()).applicationComponent().dataManager();
     }
 
     protected abstract int getFragmentLayout();
