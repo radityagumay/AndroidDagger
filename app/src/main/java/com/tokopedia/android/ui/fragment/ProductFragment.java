@@ -9,6 +9,12 @@ import android.widget.TextView;
 
 import com.tokopedia.android.R;
 import com.tokopedia.android.ui.base.BaseFragment;
+import com.tokopedia.android.ui.presenter.FragmentPresenter;
+import com.tokopedia.android.ui.view.ProductView;
+
+import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import rx.Subscriber;
@@ -17,8 +23,11 @@ import rx.android.schedulers.AndroidSchedulers;
 /**
  * Created by raditya.gumay on 16/02/2016.
  */
-public class ProductFragment extends BaseFragment {
+public class ProductFragment extends BaseFragment implements
+        ProductView {
 
+    @Inject
+    FragmentPresenter mPresenter;
     @Bind(R.id.tv_product)
     TextView mTextView;
 
@@ -85,5 +94,25 @@ public class ProductFragment extends BaseFragment {
                         mTextView.setText(character);
                     }
                 }));
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void setItems(List<String> items) {
+
+    }
+
+    @Override
+    public void showMessage(String message) {
+
     }
 }
