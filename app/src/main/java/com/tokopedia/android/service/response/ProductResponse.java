@@ -11,7 +11,11 @@ import java.util.List;
 public class ProductResponse extends BaseResponse {
 
     @SerializedName("data")
-    public Data data;
+    public List<Data> data;
+
+    public ProductResponse() {
+        this.data = new ArrayList<>();
+    }
 
     public static class Data {
         @SerializedName("id")
@@ -32,7 +36,8 @@ public class ProductResponse extends BaseResponse {
         public int condition;
 
         public Data() {
-            wholesalePrice = new ArrayList<>();
+            this.shop = new Shop();
+            this.wholesalePrice = new ArrayList<>();
         }
 
         public static class WholesalePrice {
@@ -61,6 +66,10 @@ public class ProductResponse extends BaseResponse {
             public String reputationImageUri;
             @SerializedName("shop_lucky")
             public String shopLucky;
+
+            public Shop(){
+                this.rating = new Rating();
+            }
 
             public static class Rating {
                 @SerializedName("speed")

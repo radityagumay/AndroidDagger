@@ -7,7 +7,8 @@ import android.os.Parcelable;
  * Created by raditya.gumay on 16/02/2016.
  */
 public class Repository implements Parcelable {
-    public static final Parcelable.Creator<Repository> CREATOR = new Parcelable.Creator<Repository>() {
+    public static final Parcelable.Creator<Repository> CREATOR =
+            new Parcelable.Creator<Repository>() {
         public Repository createFromParcel(Parcel source) {
             return new Repository(source);
         }
@@ -16,6 +17,7 @@ public class Repository implements Parcelable {
             return new Repository[size];
         }
     };
+
     public long id;
     public String name;
     public String url;

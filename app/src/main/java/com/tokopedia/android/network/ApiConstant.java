@@ -10,9 +10,9 @@ public class ApiConstant {
     public static final long HTTP_CONNECT_TIMEOUT = 60 * 1000;
     public static final long HTTP_READ_TIMEOUT = 60 * 1000;
 
-    //public static final String BASE_URL = "http://ajax.tokopedia.com/search/v1/";
+    public static final String BASE_URL = "http://ajax.tokopedia.com/search/v1/";
     //public static final String BASE_URL = "http://swapi.co/api/";
-    public static final String BASE_URL = "https://api.github.com";
+    //public static final String BASE_URL = "https://api.github.com";
 
     /**
      * your path

@@ -1,9 +1,15 @@
 package com.tokopedia.android.ui.presenter;
 
+import android.view.View;
+import android.widget.AdapterView;
+
 import com.google.common.collect.ImmutableList;
 import com.tokopedia.android.network.api.ProductManager;
+import com.tokopedia.android.service.ProductModel;
 import com.tokopedia.android.service.Repository;
+import com.tokopedia.android.service.response.ProductResponse;
 import com.tokopedia.android.ui.fragment.ProductFragment;
+import com.tokopedia.android.ui.utils.AppConstant;
 import com.tokopedia.android.utils.SimpleObserver;
 
 import timber.log.Timber;
@@ -24,11 +30,11 @@ public class ProductPresenter {
         this.productManager = productManager;
     }
 
-    public void onResume(){
+    public void onResume() {
         // TODO do want do you want here
     }
 
-    public void onDestroy(){
+    public void onDestroy() {
         // TODO do want do you want here
     }
 
@@ -39,7 +45,7 @@ public class ProductPresenter {
      * usually we need a time {connect time out and read time out}
      * to establish and retrieve the data from the cloud services
      */
-    public void loadProductApi(){
+    public void loadProductApi() {
 
     }
 
@@ -47,8 +53,28 @@ public class ProductPresenter {
      * Repository, is kind of you call the local data
      * such as Database
      */
-    public void loadProductRepository(){
+    public void loadProductRepository() {
+        productManager.getProductApis()
+                .subscribe(new SimpleObserver<ProductResponse>() {
+                    @Override
+                    public void onNext(ProductResponse productResponse) {
+                        super.onNext(productResponse);
+                        Timber.d(AppConstant.TAG, "loadProductRepository size :" + productResponse.data.size());
+                        productFragment.setProducts(productResponse);
+                    }
 
+                    @Override
+                    public void onCompleted() {
+                        super.onCompleted();
+                        Timber.d(AppConstant.TAG, "loadProductRepository onCompleted");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
+                        Timber.e(AppConstant.TAG, "loadProductRepository " + e.getMessage());
+                    }
+                });
     }
 
     public void loadRepository() {
@@ -67,5 +93,9 @@ public class ProductPresenter {
                         Timber.d(TAG, "loadRepository : onError");
                     }
                 });
+    }
+
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        // TODO
     }
 }

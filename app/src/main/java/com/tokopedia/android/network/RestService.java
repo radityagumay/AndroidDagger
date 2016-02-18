@@ -1,6 +1,7 @@
 package com.tokopedia.android.network;
 
 import com.tokopedia.android.service.response.BaseResponse;
+import com.tokopedia.android.service.response.ProductResponse;
 import com.tokopedia.android.service.response.RepositoryResponse;
 import com.tokopedia.android.service.response.UserResponse;
 
@@ -16,7 +17,9 @@ import rx.Observable;
 public interface RestService {
 
     @GET(ApiConstant.PRODUCT)
-    Observable<BaseResponse> getProduct();
+    Observable<ProductResponse> getProducts(
+            // TODO PATH
+    );
 
     @GET("/people/{personId}")
     Observable<com.tokopedia.android.service.Character> getCharacter(@Path("personId") int id);
