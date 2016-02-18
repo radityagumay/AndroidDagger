@@ -88,10 +88,18 @@ public class ProductFragment extends BaseFragment {
         mActivity = activity;
     }
 
+    /**
+     * Something you want to do
+     * @param loading
+     */
     public void showLoading(boolean loading) {
         Toast.makeText(mActivity, loading ? "true" : "false", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * CallBack
+     * @param repositories
+     */
     public void setRepositories(ImmutableList<Repository> repositories) {
         Toast.makeText(mActivity, repositories.get(0).name, Toast.LENGTH_SHORT).show();
     }
