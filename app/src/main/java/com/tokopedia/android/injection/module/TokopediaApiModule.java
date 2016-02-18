@@ -26,13 +26,17 @@ public class TokopediaApiModule {
     @Provides
     @Singleton
     public OkHttpClient provideOkHttpClient() {
-
         final OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+        /**
+         * You can implement this when in Debug mode
+         */
         /*if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
             builder.addInterceptor(logging);
         }*/
+
         builder.connectTimeout(ApiConstant.HTTP_CONNECT_TIMEOUT, TimeUnit.MILLISECONDS)
                 .readTimeout(ApiConstant.HTTP_READ_TIMEOUT, TimeUnit.MILLISECONDS);
         return builder.build();
