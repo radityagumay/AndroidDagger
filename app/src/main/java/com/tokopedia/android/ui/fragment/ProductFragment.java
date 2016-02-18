@@ -121,13 +121,6 @@ public class ProductFragment extends BaseFragment implements
         mPresenter.loadProductRepository();
     }
 
-    private ScrollableListener scrollableListener = new ScrollableListener() {
-        @Override
-        public void OnNextPage(int page) {
-
-        }
-    };
-
     public void showLoading(boolean loading) {
         //TODO do something
     }
@@ -149,4 +142,11 @@ public class ProductFragment extends BaseFragment implements
     public void loadMoreProducts(int page) {
 
     }
+
+    private ScrollableListener scrollableListener = new ScrollableListener() {
+        @Override
+        public void OnNextPage(int page) {
+
+        }
+    };
 }

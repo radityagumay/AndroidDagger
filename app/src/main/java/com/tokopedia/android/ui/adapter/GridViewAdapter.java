@@ -62,6 +62,8 @@ public class GridViewAdapter extends BaseAdapter {
         if (!TextUtils.isEmpty(mList.data.get(position).imageUri)) {
             Glide.with(mContext)
                     .load(mList.data.get(position).imageUri)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .error(R.mipmap.ic_launcher)
                     .into(viewHolder.mImageView);
         }
 
