@@ -4,7 +4,9 @@ import android.app.Application;
 
 import com.squareup.otto.Bus;
 import com.tokopedia.android.injection.module.ApplicationModule;
+import com.tokopedia.android.injection.module.ProductModule;
 import com.tokopedia.android.injection.module.TokopediaApiModule;
+import com.tokopedia.android.injection.module.UserModule;
 import com.tokopedia.android.ui.activity.MainActivity;
 import com.tokopedia.android.ui.base.BaseActivity;
 import com.tokopedia.android.ui.base.BaseFragment;
@@ -20,7 +22,7 @@ import dagger.Component;
 @Component(
         modules = {
                 ApplicationModule.class,
-                TokopediaApiModule.class
+                TokopediaApiModule.class,
         }
 )
 public interface ApplicationComponent {
@@ -30,6 +32,8 @@ public interface ApplicationComponent {
     void inject(BaseFragment baseFragment);
 
     void inject(BaseActivity baseActivity);
+
+    UserComponent plus(UserModule userModule);
 
     Application application();
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.tokopedia.android.TokopediaApplication;
 import com.tokopedia.android.injection.component.ApplicationComponent;
+import com.tokopedia.android.injection.component.UserComponent;
 
 /**
  * Created by raditya.gumay on 16/02/2016.
@@ -19,5 +20,9 @@ public class BaseActivity extends AppCompatActivity {
 
     protected ApplicationComponent applicationComponent() {
         return TokopediaApplication.get(this).getComponent();
+    }
+
+    public UserComponent userComponent() {
+        return TokopediaApplication.get(this).getUserComponent();
     }
 }

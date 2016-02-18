@@ -11,7 +11,10 @@ import android.widget.Toast;
 
 import com.google.common.collect.ImmutableList;
 import com.tokopedia.android.R;
+import com.tokopedia.android.TokopediaApplication;
+import com.tokopedia.android.injection.module.ProductModule;
 import com.tokopedia.android.service.Repository;
+import com.tokopedia.android.ui.base.BaseActivity;
 import com.tokopedia.android.ui.base.BaseFragment;
 import com.tokopedia.android.ui.presenter.ProductPresenter;
 
@@ -51,6 +54,10 @@ public class ProductFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((BaseActivity) getActivity())
+                .userComponent()
+                .plus(new ProductModule(this))
+                .inject(this);
     }
 
     @Nullable
@@ -78,6 +85,7 @@ public class ProductFragment extends BaseFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+        mActivity = activity;
     }
 
     public void showLoading(boolean loading) {

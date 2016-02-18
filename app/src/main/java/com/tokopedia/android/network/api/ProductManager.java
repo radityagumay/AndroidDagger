@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.tokopedia.android.network.RestService;
 import com.tokopedia.android.service.Character;
 import com.tokopedia.android.service.Repository;
+import com.tokopedia.android.service.User;
 import com.tokopedia.android.service.response.RepositoryResponse;
 
 import java.util.List;
@@ -18,9 +19,12 @@ import rx.schedulers.Schedulers;
  */
 public class ProductManager {
 
-    RestService restService;
+    private User user;
+    private RestService restService;
 
-    public ProductManager(RestService restService) {
+    public ProductManager(User user,
+                          RestService restService) {
+        this.user = user;
         this.restService = restService;
     }
 
