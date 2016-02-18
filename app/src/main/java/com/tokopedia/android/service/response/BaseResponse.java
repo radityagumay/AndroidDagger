@@ -4,40 +4,20 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by raditya.gumay on 16/02/2016.
+ * Maybe, you think. why i am not use encapsulation.
+ * here the explanation
+ *
+ * @link http://blog.leocad.io/why-you-shouldnt-use-getters-and-setters-on-android/
  */
 public class BaseResponse {
 
     @SerializedName("status")
-    private Status status;
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
+    public Status status;
 
     public static class Status {
         @SerializedName("error_code")
-        private int errorCode;
+        public int errorCode;
         @SerializedName("message")
-        private String message;
-
-        public int getErrorCode() {
-            return errorCode;
-        }
-
-        public void setErrorCode(int errorCode) {
-            this.errorCode = errorCode;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-
-        public void setMessage(String message) {
-            this.message = message;
-        }
+        public String message;
     }
 }

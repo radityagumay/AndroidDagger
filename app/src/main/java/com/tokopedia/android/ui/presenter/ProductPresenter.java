@@ -24,6 +24,33 @@ public class ProductPresenter {
         this.productManager = productManager;
     }
 
+    public void onResume(){
+        // TODO do want do you want here
+    }
+
+    public void onDestroy(){
+        // TODO do want do you want here
+    }
+
+    /**
+     * Api, is kind of you call the cloud data
+     * the best practice to implement call of data is
+     * async call both of repo and api
+     * usually we need a time {connect time out and read time out}
+     * to establish and retrieve the data from the cloud services
+     */
+    public void loadProductApi(){
+
+    }
+
+    /**
+     * Repository, is kind of you call the local data
+     * such as Database
+     */
+    public void loadProductRepository(){
+
+    }
+
     public void loadRepository() {
         productManager.getUsersRepositories()
                 .subscribe(new SimpleObserver<ImmutableList<Repository>>() {
