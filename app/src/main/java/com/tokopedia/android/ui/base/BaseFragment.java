@@ -7,11 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tokopedia.android.AppConfig;
-import com.tokopedia.android.TokopediaApplication;
-import com.tokopedia.android.injection.module.ProductModule;
 
 import butterknife.ButterKnife;
-import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by raditya.gumay on 16/02/2016.

@@ -1,5 +1,6 @@
 package com.tokopedia.android.ui.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tokopedia.android.R;
+import com.tokopedia.android.TokopediaApplication;
 import com.tokopedia.android.ui.base.BaseActivity;
 import com.tokopedia.android.ui.adapter.MainSectionsPagerAdapter;
 

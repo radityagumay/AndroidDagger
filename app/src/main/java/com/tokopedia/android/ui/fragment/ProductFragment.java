@@ -8,9 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
-import com.google.common.collect.ImmutableList;
 import com.tokopedia.android.R;
 import com.tokopedia.android.injection.module.ProductModule;
 import com.tokopedia.android.service.response.ProductResponse;
