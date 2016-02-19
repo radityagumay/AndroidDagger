@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.tokopedia.android.R;
+import com.tokopedia.android.service.response.CatalogueResponse;
 import com.tokopedia.android.service.response.ProductResponse;
 
 import java.util.List;
@@ -62,8 +63,31 @@ public class GridViewAdapter<T> extends BaseAdapter {
         if (mList.get(position) instanceof ProductResponse.Data) {
             ProductResponse.Data data = (ProductResponse.Data) mList.get(position);
             setProductView(viewHolder, data);
+        } else if (mList.get(position) instanceof CatalogueResponse.Data) {
+            CatalogueResponse.Data data = (CatalogueResponse.Data) mList.get(position);
+            setCatalogView(viewHolder, data);
         }
         return convertView;
+    }
+
+    private void setCatalogView(ViewHolder viewHolder, CatalogueResponse.Data data) {
+        if (!TextUtils.isEmpty(data.image_uri)) {
+            Glide.with(mContext)
+                    .load(data.image_uri)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .error(R.mipmap.ic_launcher)
+                    .into(viewHolder.mImageView);
+        }
+
+        if (!TextUtils.isEmpty(data.name)) {
+            viewHolder.mTitleItem.setText(data.name);
+        }
+
+        if (!TextUtils.isEmpty(data.price_min)) {
+            viewHolder.mPriceItem.setText(data.price_min);
+        }
+
+        viewHolder.mShopTitle.setText(String.valueOf(data.count_product));
     }
 
     private void setProductView(ViewHolder viewHolder, ProductResponse.Data data) {
@@ -80,11 +104,11 @@ public class GridViewAdapter<T> extends BaseAdapter {
         }
 
         if (!TextUtils.isEmpty(data.price)) {
-            viewHolder.mTitleItem.setText(data.price);
+            viewHolder.mPriceItem.setText(data.price);
         }
 
         if (!TextUtils.isEmpty(data.shop.name)) {
-            viewHolder.mTitleItem.setText(data.shop.name);
+            viewHolder.mShopTitle.setText(data.shop.name);
         }
     }
 

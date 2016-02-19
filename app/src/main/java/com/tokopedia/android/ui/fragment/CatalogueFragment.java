@@ -83,8 +83,8 @@ public class CatalogueFragment extends BaseFragment implements
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //setupGridView();
-        //callService();
+        setupGridView();
+        callService();
     }
 
     @Override
@@ -96,18 +96,18 @@ public class CatalogueFragment extends BaseFragment implements
         mPresenter.LoadCatalogueRepository();
     }
 
-    /*private void setupGridView() {
+    private void setupGridView() {
         mCatalogueResponse = new CatalogueResponse();
-        mGridViewAdapter = new GridViewAdapter(mActivity, mCatalogueResponse);
+        mGridViewAdapter = new GridViewAdapter(mActivity, mCatalogueResponse.data);
 
         mGridView.setAdapter(mGridViewAdapter);
         mGridView.setOnItemClickListener(this);
-    }*/
+    }
 
-    /*public void setCatalogueDatas(CatalogueResponse catalogueDatas) {
-        mProductResponse.data.addAll(products.data);
+    public void setCatalogueDatas(CatalogueResponse catalogueDatas) {
+        mCatalogueResponse.data.addAll(catalogueDatas.data);
         mGridViewAdapter.notifyDataSetChanged();
-    }*/
+    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

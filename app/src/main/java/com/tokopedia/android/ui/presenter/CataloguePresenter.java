@@ -38,7 +38,7 @@ public class CataloguePresenter {
                     @Override
                     public void onNext(CatalogueResponse catalogueResponse) {
                         super.onNext(catalogueResponse);
-                        //mCatalogueFragment.setCatalogueDatas(catalogueResponse);
+                        mCatalogueFragment.setCatalogueDatas(catalogueResponse);
                     }
 
                     @Override

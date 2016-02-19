@@ -18,18 +18,24 @@
         android:id="@+id/tv_title_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:singleLine="true"
         android:text="Title Barang" />
 
     <TextView
         android:id="@+id/tv_price_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:singleLine="true"
         android:text="Rp.20.000" />
 
     <TextView
         android:id="@+id/tv_shop_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:singleLine="true"
         android:text="IT Shop" />
 
 </LinearLayout>
