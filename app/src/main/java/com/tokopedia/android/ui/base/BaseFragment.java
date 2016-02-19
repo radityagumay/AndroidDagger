@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.tokopedia.android.AppConfig;
 import com.tokopedia.android.TokopediaApplication;
 import com.tokopedia.android.injection.module.ProductModule;
 
@@ -20,13 +21,13 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //initInjection();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(getFragmentLayout(), container, false);;
+        View view = inflater.inflate(getFragmentLayout(), container, false);
+        ;
         return view;
     }
 
@@ -38,21 +39,7 @@ public abstract class BaseFragment extends Fragment {
 
     private void initInjectView(final View view) {
         ButterKnife.bind(this, view);
-        ButterKnife.setDebug(true);
-    }
-
-    private void initInjection() {
-        /**
-         * You can use as global injection
-         */
-        //((BaseActivity) getActivity()).applicationComponent().inject(this);
-
-        /**
-         * Either you can use as specified injection
-         */
-        /*TokopediaApplication.get(this).getUserComponent()
-                .plus(new ProductModule(this))
-                .inject(this);*/
+        ButterKnife.setDebug(AppConfig.APPLICATION_DEBUG);
     }
 
     protected abstract int getFragmentLayout();
