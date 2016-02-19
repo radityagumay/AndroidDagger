@@ -1,17 +1,10 @@
 package com.tokopedia.android.injection.module;
 
 import com.tokopedia.android.injection.scope.ActivityScope;
-import com.tokopedia.android.injection.scope.UserScope;
 import com.tokopedia.android.network.RestService;
 import com.tokopedia.android.network.api.ProductManager;
-import com.tokopedia.android.service.User;
 import com.tokopedia.android.ui.fragment.ProductFragment;
-import com.tokopedia.android.ui.interactor.FindItemsInteractor;
 import com.tokopedia.android.ui.presenter.ProductPresenter;
-import com.tokopedia.android.ui.presenter.FragmentPresenterImpl;
-import com.tokopedia.android.ui.view.ProductView;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
