@@ -3,10 +3,7 @@ package com.tokopedia.android.ui.presenter;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.google.common.collect.ImmutableList;
 import com.tokopedia.android.network.api.ProductManager;
-import com.tokopedia.android.service.ProductModel;
-import com.tokopedia.android.service.Repository;
 import com.tokopedia.android.service.response.ProductResponse;
 import com.tokopedia.android.ui.fragment.ProductFragment;
 import com.tokopedia.android.ui.utils.AppConstant;
@@ -38,23 +35,8 @@ public class ProductPresenter {
         // TODO do want do you want here
     }
 
-    /**
-     * Api, is kind of you call the cloud data
-     * the best practice to implement call of data is
-     * async call both of repo and api
-     * usually we need a time {connect time out and read time out}
-     * to establish and retrieve the data from the cloud services
-     */
-    public void loadProductApi() {
-
-    }
-
-    /**
-     * Repository, is kind of you call the local data
-     * such as Database
-     */
     public void loadProductRepository() {
-        productManager.getProductApis()
+        productManager.getProductRepository()
                 .subscribe(new SimpleObserver<ProductResponse>() {
                     @Override
                     public void onNext(ProductResponse productResponse) {
@@ -73,24 +55,6 @@ public class ProductPresenter {
                     public void onError(Throwable e) {
                         super.onError(e);
                         Timber.e(AppConstant.TAG, "loadProductRepository " + e.getMessage());
-                    }
-                });
-    }
-
-    public void loadRepository() {
-        productManager.getUsersRepositories()
-                .subscribe(new SimpleObserver<ImmutableList<Repository>>() {
-                    @Override
-                    public void onNext(ImmutableList<Repository> repositories) {
-                        //productFragment.showLoading(false);
-                        productFragment.setRepositories(repositories);
-                        Timber.d(TAG, "loadRepository : onNext");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        //productFragment.showLoading(false);
-                        Timber.d(TAG, "loadRepository : onError");
                     }
                 });
     }
