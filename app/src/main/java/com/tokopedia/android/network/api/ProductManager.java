@@ -19,12 +19,9 @@ import rx.schedulers.Schedulers;
  */
 public class ProductManager {
 
-    private User user;
     private RestService restService;
 
-    public ProductManager(User user,
-                          RestService restService) {
-        this.user = user;
+    public ProductManager(RestService restService) {
         this.restService = restService;
     }
 

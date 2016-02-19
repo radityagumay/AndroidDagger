@@ -73,7 +73,7 @@ public class ProductFragment extends BaseFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((BaseActivity) getActivity())
-                .userComponent()
+                .applicationComponent()
                 .plus(new ProductModule(this))
                 .inject(this);
     }

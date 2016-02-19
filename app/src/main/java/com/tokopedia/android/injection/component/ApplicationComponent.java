@@ -33,7 +33,9 @@ public interface ApplicationComponent {
 
     void inject(BaseActivity baseActivity);
 
-    UserComponent plus(UserModule userModule);
-
     Application application();
+
+    //UserComponent plus(UserModule userModule);
+
+    ProductComponent plus(ProductModule productModule);
 }

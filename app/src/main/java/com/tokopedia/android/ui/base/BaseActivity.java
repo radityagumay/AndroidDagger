@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.tokopedia.android.TokopediaApplication;
 import com.tokopedia.android.injection.component.ApplicationComponent;
+import com.tokopedia.android.injection.component.ProductComponent;
 import com.tokopedia.android.injection.component.UserComponent;
 
 /**
@@ -18,11 +19,11 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
-    protected ApplicationComponent applicationComponent() {
+    public ApplicationComponent applicationComponent() {
         return TokopediaApplication.get(this).getComponent();
     }
 
-    public UserComponent userComponent() {
+    /*public UserComponent userComponent() {
         return TokopediaApplication.get(this).getUserComponent();
-    }
+    }*/
 }

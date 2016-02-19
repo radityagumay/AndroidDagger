@@ -28,7 +28,7 @@ public class UserModule {
 
     @Provides
     @UserScope
-    ProductManager provideProductManager (User user, RestService restService) {
-        return new ProductManager(user, restService);
+    ProductManager provideProductManager (RestService restService) {
+        return new ProductManager(restService);
     }
 }
