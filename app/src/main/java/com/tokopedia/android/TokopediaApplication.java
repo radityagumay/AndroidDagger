@@ -5,12 +5,7 @@ import android.content.Context;
 
 import com.tokopedia.android.injection.component.ApplicationComponent;
 import com.tokopedia.android.injection.component.DaggerApplicationComponent;
-import com.tokopedia.android.injection.component.ProductComponent;
-import com.tokopedia.android.injection.component.UserComponent;
 import com.tokopedia.android.injection.module.ApplicationModule;
-import com.tokopedia.android.injection.module.ProductModule;
-import com.tokopedia.android.injection.module.UserModule;
-import com.tokopedia.android.service.User;
 
 import timber.log.Timber;
 
@@ -20,18 +15,24 @@ import timber.log.Timber;
 public class TokopediaApplication extends Application {
 
     private ApplicationComponent mApplicationComponent;
-    //private UserComponent mUserComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+        if (BuildConfig.DEBUG){
+            Timber.plant(new Timber.DebugTree());
 
+            /**
+             * You also can install LeakCanary
+             */
+        }
+        initComponentDepedencies();
+    }
+
+    private void initComponentDepedencies(){
         mApplicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
-
-        //createUserComponent(new User());
     }
 
     public static TokopediaApplication get(Context context) {
@@ -41,17 +42,5 @@ public class TokopediaApplication extends Application {
     public ApplicationComponent getComponent() {
         return mApplicationComponent;
     }
-
-    /**
-     * Place your component here
-     */
-    /*public UserComponent createUserComponent(User user) {
-        mUserComponent = mApplicationComponent.plus(new UserModule(user));
-        return mUserComponent;
-    }
-
-    public UserComponent getUserComponent() {
-        return mUserComponent;
-    }*/
 }
 
