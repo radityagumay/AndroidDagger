@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.tokopedia.android.network.ApiConstant;
 import com.tokopedia.android.network.RestService;
-import com.tokopedia.android.network.api.UserManager;
 
 import java.util.concurrent.TimeUnit;
 
@@ -55,13 +54,7 @@ public class TokopediaApiModule {
 
     @Provides
     @Singleton
-    public RestService provideGithubApiService(Retrofit restAdapter) {
+    public RestService provideTokopediaApiService(Retrofit restAdapter) {
         return restAdapter.create(RestService.class);
-    }
-
-    @Provides
-    @Singleton
-    public UserManager provideUserManager(RestService githubApiService) {
-        return new UserManager(githubApiService);
     }
 }
