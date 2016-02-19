@@ -3,38 +3,26 @@ package com.tokopedia.android.ui.fragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.common.collect.ImmutableList;
 import com.tokopedia.android.R;
-import com.tokopedia.android.TokopediaApplication;
 import com.tokopedia.android.injection.module.ProductModule;
-import com.tokopedia.android.service.ProductModel;
-import com.tokopedia.android.service.Repository;
 import com.tokopedia.android.service.response.ProductResponse;
 import com.tokopedia.android.ui.adapter.GridViewAdapter;
 import com.tokopedia.android.ui.base.BaseActivity;
 import com.tokopedia.android.ui.base.BaseFragment;
 import com.tokopedia.android.ui.presenter.ProductPresenter;
-import com.tokopedia.android.ui.utils.AppConstant;
 import com.tokopedia.android.ui.widget.ScrollableListener;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
-import timber.log.Timber;
 
 /**
  * Created by raditya.gumay on 16/02/2016.
@@ -123,10 +111,6 @@ public class ProductFragment extends BaseFragment implements
 
     public void showLoading(boolean loading) {
         //TODO do something
-    }
-
-    public void setRepositories(ImmutableList<Repository> repositories) {
-        Toast.makeText(mActivity, repositories.get(0).name, Toast.LENGTH_SHORT).show();
     }
 
     public void setProducts(ProductResponse products) {
