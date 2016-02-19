@@ -21,24 +21,24 @@ import butterknife.ButterKnife;
 /**
  * Created by raditya.gumay on 18/02/2016.
  */
-public class GridViewAdapter extends BaseAdapter {
+public class GridViewAdapter<T> extends BaseAdapter {
 
     private Context mContext;
-    private ProductResponse mList;
+    private List<T> mList;
 
-    public GridViewAdapter(Context context, ProductResponse list) {
+    public GridViewAdapter(Context context, List<T> list) {
         this.mContext = context;
         this.mList = list;
     }
 
     @Override
     public int getCount() {
-        return mList.data.size();
+        return mList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mList.data.get(position);
+        return mList.get(position);
     }
 
     @Override
@@ -59,26 +59,33 @@ public class GridViewAdapter extends BaseAdapter {
             convertView.setTag(viewHolder);
         }
 
-        if (!TextUtils.isEmpty(mList.data.get(position).imageUri)) {
+        if (mList.get(position) instanceof ProductResponse.Data) {
+            ProductResponse.Data data = (ProductResponse.Data) mList.get(position);
+            setProductView(viewHolder, data);
+        }
+        return convertView;
+    }
+
+    private void setProductView(ViewHolder viewHolder, ProductResponse.Data data) {
+        if (!TextUtils.isEmpty(data.imageUri)) {
             Glide.with(mContext)
-                    .load(mList.data.get(position).imageUri)
+                    .load(data.imageUri)
                     .placeholder(R.mipmap.ic_launcher)
                     .error(R.mipmap.ic_launcher)
                     .into(viewHolder.mImageView);
         }
 
-        if (!TextUtils.isEmpty(mList.data.get(position).name)) {
-            viewHolder.mTitleItem.setText(mList.data.get(position).name);
+        if (!TextUtils.isEmpty(data.name)) {
+            viewHolder.mTitleItem.setText(data.name);
         }
 
-        if (!TextUtils.isEmpty(mList.data.get(position).price)) {
-            viewHolder.mTitleItem.setText(mList.data.get(position).price);
+        if (!TextUtils.isEmpty(data.price)) {
+            viewHolder.mTitleItem.setText(data.price);
         }
 
-        if (!TextUtils.isEmpty(mList.data.get(position).shop.name)) {
-            viewHolder.mTitleItem.setText(mList.data.get(position).shop.name);
+        if (!TextUtils.isEmpty(data.shop.name)) {
+            viewHolder.mTitleItem.setText(data.shop.name);
         }
-        return convertView;
     }
 
     static class ViewHolder {

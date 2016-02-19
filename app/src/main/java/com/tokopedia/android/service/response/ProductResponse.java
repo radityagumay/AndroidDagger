@@ -22,6 +22,7 @@ public class ProductResponse extends BaseResponse implements
     }
 
     protected ProductResponse(Parcel in) {
+        data = in.createTypedArrayList(Data.CREATOR);
     }
 
     public static final Creator<ProductResponse> CREATOR = new Creator<ProductResponse>() {
@@ -64,6 +65,10 @@ public class ProductResponse extends BaseResponse implements
         @SerializedName("condition")
         public int condition;
 
+        public Data(){
+
+        }
+
         protected Data(Parcel in) {
             id = in.readInt();
             name = in.readString();
@@ -71,6 +76,7 @@ public class ProductResponse extends BaseResponse implements
             imageUri = in.readString();
             price = in.readString();
             condition = in.readInt();
+            wholesalePrice = in.createTypedArrayList(WholesalePrice.CREATOR);
         }
 
         public static final Creator<Data> CREATOR = new Creator<Data>() {
@@ -98,6 +104,7 @@ public class ProductResponse extends BaseResponse implements
             dest.writeString(imageUri);
             dest.writeString(price);
             dest.writeInt(condition);
+            dest.writeList(wholesalePrice);
         }
 
         public static class WholesalePrice implements Parcelable {

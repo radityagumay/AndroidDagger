@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.tokopedia.android.ui.fragment.CatalogueFragment;
 import com.tokopedia.android.ui.fragment.ProductFragment;
 
 /**
@@ -27,7 +28,7 @@ public class MainSectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return ProductFragment.newInstance("", "");
             case 1:
-                return ProductFragment.newInstance("", "");
+                return CatalogueFragment.newInstance("", "");
             case 2:
                 return ProductFragment.newInstance("", "");
             default:

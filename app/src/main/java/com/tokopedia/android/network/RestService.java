@@ -1,5 +1,6 @@
 package com.tokopedia.android.network;
 
+import com.tokopedia.android.service.response.CatalogueResponse;
 import com.tokopedia.android.service.response.ProductResponse;
 
 import retrofit2.http.GET;
@@ -12,6 +13,11 @@ public interface RestService {
 
     @GET(ApiConstant.PRODUCT)
     Observable<ProductResponse> getProducts(
+            // TODO PATH
+    );
+
+    @GET(ApiConstant.CATALOG)
+    Observable<CatalogueResponse> getCatalog(
             // TODO PATH
     );
 }

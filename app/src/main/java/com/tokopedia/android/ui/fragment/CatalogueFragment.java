@@ -2,7 +2,6 @@ package com.tokopedia.android.ui.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,40 +9,41 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.tokopedia.android.R;
+import com.tokopedia.android.injection.module.CatalogueModule;
 import com.tokopedia.android.injection.module.ProductModule;
+import com.tokopedia.android.service.response.CatalogueResponse;
 import com.tokopedia.android.service.response.ProductResponse;
 import com.tokopedia.android.ui.adapter.GridViewAdapter;
 import com.tokopedia.android.ui.base.BaseActivity;
 import com.tokopedia.android.ui.base.BaseFragment;
-import com.tokopedia.android.ui.presenter.ProductPresenter;
-import com.tokopedia.android.ui.widget.ScrollableListener;
+import com.tokopedia.android.ui.presenter.CataloguePresenter;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
 
 /**
- * Created by raditya.gumay on 16/02/2016.
+ * Created by raditya.gumay on 18/02/2016.
  */
-public class ProductFragment extends BaseFragment implements
+public class CatalogueFragment extends BaseFragment implements
         AdapterView.OnItemClickListener {
 
     @Inject
-    ProductPresenter mPresenter;
+    CataloguePresenter mPresenter;
 
     @Bind(R.id.product_horizontal_grid)
     GridView mGridView;
 
     private GridViewAdapter mGridViewAdapter;
-    private ProductResponse mProductResponse;
+    private CatalogueResponse mCatalogueResponse;
 
     private Activity mActivity;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    public static ProductFragment newInstance(String param1, String param2) {
-        ProductFragment fragment = new ProductFragment();
+    public static CatalogueFragment newInstance(String param1, String param2) {
+        CatalogueFragment fragment = new CatalogueFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -51,8 +51,8 @@ public class ProductFragment extends BaseFragment implements
         return fragment;
     }
 
-    public ProductFragment() {
-        //TODO
+    public CatalogueFragment() {
+        // TODO
     }
 
     @Override
@@ -61,25 +61,11 @@ public class ProductFragment extends BaseFragment implements
         initInjection();
     }
 
-    private void initInjection(){
+    private void initInjection() {
         ((BaseActivity) getActivity())
                 .applicationComponent()
-                .plus(new ProductModule(this))
+                .plus(new CatalogueModule(this))
                 .inject(this);
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View fragmentView = inflater.inflate(R.layout.fragment_product, container, false);
-        return fragmentView;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        setupGridView();
-        callService();
     }
 
     @Override
@@ -89,50 +75,42 @@ public class ProductFragment extends BaseFragment implements
     }
 
     @Override
-    protected int getFragmentLayout() {
-        return R.layout.fragment_product;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View fragmentView = inflater.inflate(R.layout.fragment_catalogue, container, false);
+        return fragmentView;
     }
-
-    private void setupGridView() {
-        mProductResponse = new ProductResponse();
-        mGridViewAdapter = new GridViewAdapter(mActivity, mProductResponse.data);
-
-        mGridView.setAdapter(mGridViewAdapter);
-        mGridView.setOnItemClickListener(this);
-        mGridView.setOnScrollListener(scrollableListener);
-    }
-
-    private ScrollableListener scrollableListener = new ScrollableListener() {
-        @Override
-        public void OnNextPage(int page) {
-
-        }
-    };
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //setupGridView();
+        //callService();
+    }
+
+    @Override
+    protected int getFragmentLayout() {
+        return R.layout.fragment_catalogue;
     }
 
     private void callService() {
-        mPresenter.loadProductRepository();
+        mPresenter.LoadCatalogueRepository();
     }
 
-    public void showLoading(boolean loading) {
-        //TODO do something
-    }
+    /*private void setupGridView() {
+        mCatalogueResponse = new CatalogueResponse();
+        mGridViewAdapter = new GridViewAdapter(mActivity, mCatalogueResponse);
 
-    public void setProducts(ProductResponse products) {
+        mGridView.setAdapter(mGridViewAdapter);
+        mGridView.setOnItemClickListener(this);
+    }*/
+
+    /*public void setCatalogueDatas(CatalogueResponse catalogueDatas) {
         mProductResponse.data.addAll(products.data);
         mGridViewAdapter.notifyDataSetChanged();
-    }
+    }*/
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        mPresenter.onItemClick(parent, view, position, id);
-    }
-
-    public void loadMoreProducts(int page) {
 
     }
 }

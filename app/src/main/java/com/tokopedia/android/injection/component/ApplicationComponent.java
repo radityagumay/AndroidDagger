@@ -1,6 +1,7 @@
 package com.tokopedia.android.injection.component;
 
 import com.tokopedia.android.injection.module.ApplicationModule;
+import com.tokopedia.android.injection.module.CatalogueModule;
 import com.tokopedia.android.injection.module.ProductModule;
 import com.tokopedia.android.injection.module.TokopediaApiModule;
 import com.tokopedia.android.ui.base.BaseActivity;
@@ -24,4 +25,5 @@ public interface ApplicationComponent {
     void inject(BaseActivity baseActivity);
 
     ProductComponent plus(ProductModule productModule);
+    CatalogueComponent plus(CatalogueModule catalogueModule);
 }

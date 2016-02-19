@@ -43,7 +43,7 @@ public class TokopediaApiModule {
 
     @Provides
     @Singleton
-    public Retrofit provideRestAdapter(Application application, OkHttpClient okHttpClient) {
+    public Retrofit provideRestAdapter(OkHttpClient okHttpClient) {
         Retrofit.Builder builder = new Retrofit.Builder();
         builder.client(okHttpClient)
                 .baseUrl(ApiConstant.BASE_URL)

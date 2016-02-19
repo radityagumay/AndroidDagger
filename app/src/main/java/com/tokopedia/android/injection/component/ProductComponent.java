@@ -14,5 +14,5 @@ import dagger.Subcomponent;
         modules = ProductModule.class
 )
 public interface ProductComponent {
-    ProductFragment inject(ProductFragment repositoriesListActivity);
+    ProductFragment inject(ProductFragment productFragment);
 }

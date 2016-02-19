@@ -22,13 +22,13 @@ public class ProductModule {
 
     @Provides
     @ActivityScope
-    ProductFragment provideRepositoriesListActivity() {
+    ProductFragment provideProductFragment() {
         return productFragment;
     }
 
     @Provides
     @ActivityScope
-    ProductPresenter provideRepositoriesListActivityPresenter(ProductManager productManager) {
+    ProductPresenter provideProductFragmentPresenter(ProductManager productManager) {
         return new ProductPresenter(productFragment, productManager);
     }
 

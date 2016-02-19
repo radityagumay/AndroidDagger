@@ -1,6 +1,5 @@
 package com.tokopedia.android.ui.activity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -9,9 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tokopedia.android.R;
-import com.tokopedia.android.TokopediaApplication;
-import com.tokopedia.android.ui.base.BaseActivity;
 import com.tokopedia.android.ui.adapter.MainSectionsPagerAdapter;
+import com.tokopedia.android.ui.base.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -41,12 +39,6 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @Override
-    protected void onDestroy() {
-        ButterKnife.unbind(this);
-        super.onDestroy();
-    }
-
     private void initSectionAdapter() {
         mSectionsPagerAdapter =
                 new MainSectionsPagerAdapter(getSupportFragmentManager());
@@ -57,6 +49,12 @@ public class MainActivity extends BaseActivity {
 
     private void initToolbar() {
         setSupportActionBar(mToolbar);
+    }
+
+    @Override
+    protected void onDestroy() {
+        ButterKnife.unbind(this);
+        super.onDestroy();
     }
 
     @Override

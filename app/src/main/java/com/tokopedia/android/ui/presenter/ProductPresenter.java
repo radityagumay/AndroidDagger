@@ -16,8 +16,6 @@ import timber.log.Timber;
  */
 public class ProductPresenter {
 
-    private static final String TAG = ProductPresenter.class.getSimpleName();
-
     private ProductFragment productFragment;
     private ProductManager productManager;
 
