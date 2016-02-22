@@ -60,55 +60,50 @@ public class GridViewAdapter<T> extends BaseAdapter {
             convertView.setTag(viewHolder);
         }
 
+        String imageUrl = "";
+        String name = "";
+        String price = "";
+        String bottomText = "";
         if (mList.get(position) instanceof ProductResponse.Data) {
             ProductResponse.Data data = (ProductResponse.Data) mList.get(position);
-            setProductView(viewHolder, data);
+            imageUrl = data.imageUri;
+            name = data.name;
+            price = data.price;
+            bottomText = data.shop.name;
         } else if (mList.get(position) instanceof CatalogueResponse.Data) {
             CatalogueResponse.Data data = (CatalogueResponse.Data) mList.get(position);
-            setCatalogView(viewHolder, data);
+            imageUrl = data.image_uri;
+            name = data.name;
+            price = data.price_min;
+            bottomText = String.valueOf(data.count_product);
         }
+        setItem(viewHolder, imageUrl, name, price, bottomText);
         return convertView;
     }
 
-    private void setCatalogView(ViewHolder viewHolder, CatalogueResponse.Data data) {
-        if (!TextUtils.isEmpty(data.image_uri)) {
+    private void setItem(ViewHolder viewHolder,
+                         String imageUrl,
+                         String name,
+                         String price,
+                         String bottomText) {
+        if (!TextUtils.isEmpty(imageUrl)) {
             Glide.with(mContext)
-                    .load(data.image_uri)
+                    .load(imageUrl)
                     .placeholder(R.mipmap.ic_launcher)
                     .error(R.mipmap.ic_launcher)
                     .into(viewHolder.mImageView);
         }
 
-        if (!TextUtils.isEmpty(data.name)) {
-            viewHolder.mTitleItem.setText(data.name);
+        if (!TextUtils.isEmpty(name)) {
+            viewHolder.mTitleItem.setText(name);
         }
 
-        if (!TextUtils.isEmpty(data.price_min)) {
-            viewHolder.mPriceItem.setText(data.price_min);
+        if (!TextUtils.isEmpty(price)) {
+            viewHolder.mPriceItem.setText(bottomText);
         }
 
-        viewHolder.mShopTitle.setText(String.valueOf(data.count_product));
-    }
-
-    private void setProductView(ViewHolder viewHolder, ProductResponse.Data data) {
-        if (!TextUtils.isEmpty(data.imageUri)) {
-            Glide.with(mContext)
-                    .load(data.imageUri)
-                    .placeholder(R.mipmap.ic_launcher)
-                    .error(R.mipmap.ic_launcher)
-                    .into(viewHolder.mImageView);
-        }
-
-        if (!TextUtils.isEmpty(data.name)) {
-            viewHolder.mTitleItem.setText(data.name);
-        }
-
-        if (!TextUtils.isEmpty(data.price)) {
-            viewHolder.mPriceItem.setText(data.price);
-        }
-
-        if (!TextUtils.isEmpty(data.shop.name)) {
-            viewHolder.mShopTitle.setText(data.shop.name);
+        if (!TextUtils.isEmpty(bottomText)) {
+            viewHolder.mShopTitle.setText(bottomText);
         }
     }
 
