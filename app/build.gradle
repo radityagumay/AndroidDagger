@@ -39,6 +39,7 @@ android {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
 
     lintOptions {
@@ -48,7 +49,7 @@ android {
 
 ext {
     DAGGER_VERSION = '2.0.2'
-    SUPPORT_LIBRARY_VERSION = '22.2.1'
+    SUPPORT_LIBRARY_VERSION = '23.1.1'
     REACTIVE_VERSION = '1.1.0'
 }
 
@@ -98,5 +99,7 @@ dependencies {
     // GUAVA
     compile 'com.google.guava:guava:18.0'
 
-    compile project(':core')
+    // REALM
+    compile 'io.realm:realm-android:0.87.4'
+    //compile project(':core')
 }

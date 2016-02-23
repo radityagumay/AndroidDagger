@@ -1,3 +1,4 @@
+/*
 package com.tokopedia.android.ui.activity;
 
 import android.app.Activity;
@@ -5,21 +6,20 @@ import android.content.ContentProviderOperation;
 import android.content.ContentValues;
 import android.os.Bundle;
 
-import com.google.common.collect.ImmutableList;
-import com.tokopedia.core.database.DataContentProvider;
-import com.tokopedia.core.database.DatabaseHelper;
-
 import java.util.ArrayList;
 import java.util.List;
 
+*/
 /**
  * Created by raditya.gumay on 22/02/2016.
- */
+ *//*
+
 public class DatabaseActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        insertData();
     }
 
     private void insertData() {
@@ -29,11 +29,26 @@ public class DatabaseActivity extends Activity {
                 .withYieldAllowed(true)
                 .build());
 
+        try {
+            getContentResolver().applyBatch(DataContentProvider.AUTHORITY, provider);
+        } catch (Exception ex) {
+            android.util.Log.e("DatabaseActivity", ex.getMessage());
+        }
     }
 
     private ContentValues getContentValues() {
-        ContentValues values = new ContentValues();
-        return null;
+        List<DummyData> datas = getData();
+        ContentValues values = null;
+        */
+/*for (int i = 0; i < datas.size(); i++) {
+            values = new ContentValues();
+            values.put(ProductTable.COLUMN_IMAGE_URL, datas.get(i).imageUrl);
+            values.put(ProductTable.COLUMN_NAME, datas.get(i).name);
+            values.put(ProductTable.COLUMN_PRICE, datas.get(i).price);
+            values.put(ProductTable.COLUMN_FOTTER, datas.get(i).bottomText);
+        }*//*
+
+        return values;
     }
 
     private List<DummyData> getData() {
@@ -57,3 +72,4 @@ public class DatabaseActivity extends Activity {
         public String bottomText;
     }
 }
+*/

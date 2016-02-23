@@ -1,6 +1,7 @@
 package com.tokopedia.android.injection.module;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.squareup.otto.Bus;
 
@@ -27,6 +28,12 @@ public class ApplicationModule {
     @Singleton
     Application provideApplication() {
         return mApplication;
+    }
+
+    @Provides
+    @Singleton
+    Context provideContext() {
+        return mApplication.getApplicationContext();
     }
 
 }

@@ -3,9 +3,13 @@ package com.tokopedia.android;
 import android.app.Application;
 import android.content.Context;
 
+import com.tokopedia.android.database.DatabaseRealm;
 import com.tokopedia.android.injection.component.ApplicationComponent;
 import com.tokopedia.android.injection.component.DaggerApplicationComponent;
 import com.tokopedia.android.injection.module.ApplicationModule;
+import com.tokopedia.android.injection.module.RepositoryModule;
+
+import javax.inject.Inject;
 
 import timber.log.Timber;
 
@@ -14,12 +18,15 @@ import timber.log.Timber;
  */
 public class TokopediaApplication extends Application {
 
+    @Inject
+    DatabaseRealm databaseRealm;
+
     private ApplicationComponent mApplicationComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        if (BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
 
             /**
@@ -27,11 +34,17 @@ public class TokopediaApplication extends Application {
              */
         }
         initComponentDepedencies();
+        setupRealmDatabase();
     }
 
-    private void initComponentDepedencies(){
+    private void setupRealmDatabase() {
+        databaseRealm.setup();
+    }
+
+    private void initComponentDepedencies() {
         mApplicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
+                .repositoryModule(new RepositoryModule())
                 .build();
     }
 
