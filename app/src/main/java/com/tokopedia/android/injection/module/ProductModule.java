@@ -6,6 +6,8 @@ import com.tokopedia.android.network.api.ProductManager;
 import com.tokopedia.android.ui.fragment.ProductFragment;
 import com.tokopedia.android.ui.presenter.ProductPresenter;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 
