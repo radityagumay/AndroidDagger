@@ -1,4 +1,4 @@
-package com.tokopedia.android;
+package com.raditya.android;
 
 import org.junit.Test;
 
