@@ -16,8 +16,10 @@ Please see more in this link :
 <li><a href="https://www.parleys.com/tutorial/architecting-android-applications-dagger">Jake wharton Dagger2</a></li>
 </ul>
 
-Will Continue @raditya
+@raditya
 
+Email : gumay.raditya@yahoo.com
+Blog  : http://blog.radityalabs.net
 
 
 
