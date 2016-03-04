@@ -15,21 +15,23 @@ import timber.log.Timber;
 public class AndroidApplication extends Application {
 
     private ApplicationComponent mApplicationComponent;
+    private static Context mContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        if (BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
 
             /**
              * You also can install LeakCanary
              */
         }
+        mContext = this.getApplicationContext();
         initComponentDepedencies();
     }
 
-    private void initComponentDepedencies(){
+    private void initComponentDepedencies() {
         mApplicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
@@ -41,6 +43,10 @@ public class AndroidApplication extends Application {
 
     public ApplicationComponent getComponent() {
         return mApplicationComponent;
+    }
+
+    public static Context getContext() {
+        return mContext;
     }
 }
 
