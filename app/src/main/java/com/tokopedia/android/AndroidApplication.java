@@ -12,7 +12,7 @@ import timber.log.Timber;
 /**
  * Created by raditya.gumay on 16/02/2016.
  */
-public class TokopediaApplication extends Application {
+public class AndroidApplication extends Application {
 
     private ApplicationComponent mApplicationComponent;
 
@@ -35,8 +35,8 @@ public class TokopediaApplication extends Application {
                 .build();
     }
 
-    public static TokopediaApplication get(Context context) {
-        return (TokopediaApplication) context.getApplicationContext();
+    public static AndroidApplication get(Context context) {
+        return (AndroidApplication) context.getApplicationContext();
     }
 
     public ApplicationComponent getComponent() {
