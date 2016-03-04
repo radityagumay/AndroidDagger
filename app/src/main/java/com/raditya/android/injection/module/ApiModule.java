@@ -18,7 +18,7 @@ import retrofit2.RxJavaCallAdapterFactory;
  * Created by raditya.gumay on 16/02/2016.
  */
 @Module
-public class TokopediaApiModule {
+public class ApiModule {
 
     @Provides
     @Singleton

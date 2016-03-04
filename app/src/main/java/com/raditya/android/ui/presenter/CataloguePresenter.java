@@ -1,5 +1,9 @@
 package com.raditya.android.ui.presenter;
 
+import android.widget.Toast;
+
+import com.raditya.android.AndroidApplication;
+import com.raditya.android.injection.module.ApplicationModule;
 import com.raditya.android.network.api.manager.CatalogueManager;
 import com.raditya.android.service.response.CatalogueResponse;
 import com.raditya.android.ui.fragment.CatalogueFragment;
@@ -44,6 +48,7 @@ public class CataloguePresenter {
                     @Override
                     public void onError(Throwable e) {
                         super.onError(e);
+                        Toast.makeText(this, "Just Implement Model", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

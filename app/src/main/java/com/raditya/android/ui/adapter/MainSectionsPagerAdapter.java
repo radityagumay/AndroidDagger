@@ -13,9 +13,9 @@ import com.raditya.android.ui.fragment.ProductFragment;
 public class MainSectionsPagerAdapter extends FragmentPagerAdapter {
 
     private static final String[] TITLE = new String[]{
-            "Product",
-            "Katalog",
-            "Toko",
+            "#1",
+            "#2",
+            "#3",
     };
 
     public MainSectionsPagerAdapter(FragmentManager fm) {

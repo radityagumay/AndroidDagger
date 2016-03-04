@@ -3,7 +3,7 @@ package com.raditya.android.injection.component;
 import com.raditya.android.injection.module.ApplicationModule;
 import com.raditya.android.injection.module.CatalogueModule;
 import com.raditya.android.injection.module.ProductModule;
-import com.raditya.android.injection.module.TokopediaApiModule;
+import com.raditya.android.injection.module.ApiModule;
 import com.raditya.android.ui.base.BaseActivity;
 
 import javax.inject.Singleton;
@@ -17,7 +17,7 @@ import dagger.Component;
 @Component(
         modules = {
                 ApplicationModule.class,
-                TokopediaApiModule.class,
+                ApiModule.class,
         }
 )
 public interface ApplicationComponent {
